@@ -18,4 +18,9 @@ jobs:
         uses: gradle/gradle-build-action@v2
       - name: Execute Gradle build
         run: ./gradlew build
-
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-actions-practice
+          path: |
+            build/libs/github-actions-practice-*.jar
