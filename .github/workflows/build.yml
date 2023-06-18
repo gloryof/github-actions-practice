@@ -8,6 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
   build:
+    needs: checkout
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +24,7 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build
   test:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -35,6 +37,7 @@ jobs:
           path: |
             build/reports/tests/test
   artifact:
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
